@@ -1,0 +1,167 @@
+﻿<UserControl x:Class="Ironwall.Thirdparty.SendMessage.Views.MsgSetupView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:local="clr-namespace:Ironwall.Thirdparty.SendMessage.Views"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+
+    <Grid Margin="16 24 24 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="16" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource NotoSansCJKkRRegular}" />
+                <Setter Property="FontSize"
+                        Value="16" />
+                <Setter Property="Opacity"
+                        Value="0.75" />
+            </Style>
+        </Grid.Resources>
+
+        <md:PackIcon Grid.Column="0"
+                     Kind="FileSend"
+                     VerticalAlignment="Center"
+                     Width="18"
+                     Height="18"
+                     Foreground="{Binding ElementName=TextBlockItem, Path=Foreground}" />
+
+        <TextBlock x:Name="TextBlockItem"
+                   Grid.Column="2"
+                   IsEnabled="{Binding ElementName=ToggleButtonItem, Path=IsChecked}"
+                   Text="SK 자산 DB 전송 설정">
+
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontFamily"
+                            Value="{StaticResource NotoSansCJKkRRegular}" />
+                    <Setter Property="FontSize"
+                            Value="16" />
+                    <Setter Property="Opacity"
+                            Value="0.75" />
+
+                    <Style.Triggers>
+                        <Trigger Property="TextBlock.IsEnabled"
+                                 Value="False">
+                            <Setter Property="TextBlock.Foreground"
+                                    Value="Gray" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
+        <ToggleButton x:Name="ToggleButtonItem"
+                      Grid.Column="4"
+                      Style="{StaticResource MaterialDesignSwitchToggleButton}"
+                      ToolTip="MaterialDesignSwitchToggleButton"
+                      IsChecked="{Binding IsSendActive, Mode=TwoWay}" />
+
+        <Grid Grid.Row="2"
+              Grid.Column="2"
+              Grid.ColumnSpan="9"
+              Margin="0 16 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="16" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <md:PackIcon VerticalAlignment="Center"
+                         Kind="Ip"
+                         Width="16"
+                         Height="16"
+                         Foreground="{Binding ElementName=TextBlockItem, Path=Foreground}" />
+            <TextBlock Grid.Column="2"
+                       Margin="5 0"
+                       Foreground="{Binding ElementName=TextBlockItem, Path=Foreground}"
+                       Text="IP" />
+            
+            <TextBox Grid.Column="3" 
+                     Margin="5 0"
+                     MaxLength="3"
+                     md:TextFieldAssist.CharacterCounterVisibility="Collapsed"
+                     IsEnabled="{Binding ElementName=ToggleButtonItem, Path=IsChecked}"
+                     Foreground="{Binding ElementName=TextBlockItem, Path=Foreground}"
+                     Text="{Binding First, FallbackValue=192}"/>
+            <TextBox Grid.Column="4"
+                     Margin="5 0"
+                     MaxLength="3"
+                     md:TextFieldAssist.CharacterCounterVisibility="Collapsed"
+                     IsEnabled="{Binding ElementName=ToggleButtonItem, Path=IsChecked}"
+                     Foreground="{Binding ElementName=TextBlockItem, Path=Foreground}"
+                     Text="{Binding Second, FallbackValue=168}"/>
+            <TextBox Grid.Column="5"
+                     Margin="5 0"
+                     MaxLength="3"
+                     md:TextFieldAssist.CharacterCounterVisibility="Collapsed"
+                     IsEnabled="{Binding ElementName=ToggleButtonItem, Path=IsChecked}"
+                     Foreground="{Binding ElementName=TextBlockItem, Path=Foreground}"
+                     Text="{Binding Third, FallbackValue=12}"/>
+            <TextBox Grid.Column="6"
+                     Margin="5 0"
+                     MaxLength="3"
+                     md:TextFieldAssist.CharacterCounterVisibility="Collapsed"
+                     IsEnabled="{Binding ElementName=ToggleButtonItem, Path=IsChecked}"
+                     Foreground="{Binding ElementName=TextBlockItem, Path=Foreground}"
+                     Text="{Binding Forth, FallbackValue=33}" />
+            
+
+        </Grid>
+        <Grid Grid.Row="3"
+              Grid.Column="2"
+              Grid.ColumnSpan="9"
+              Margin="0 16 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="16" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <md:PackIcon VerticalAlignment="Center"
+                         Kind="SerialPort"
+                         Width="16"
+                         Height="16"
+                         Foreground="{Binding ElementName=TextBlockItem, Path=Foreground}" />
+            
+            <TextBlock Grid.Column="2"
+                       Margin="5 0"
+                       Foreground="{Binding ElementName=TextBlockItem, Path=Foreground}"
+                       Text="Port" />
+
+            <TextBox Grid.Column="3"
+                     Margin="5 0"
+                     IsEnabled="{Binding ElementName=ToggleButtonItem, Path=IsChecked}"
+                     Foreground="{Binding ElementName=TextBlockItem, Path=Foreground}"
+                     Text="{Binding Port, FallbackValue=2005}" />
+
+        </Grid>
+    </Grid>
+</UserControl>
