@@ -18,9 +18,9 @@ namespace Ironwall.Thirdparty.SendMessage.ViewModels
         public MsgSetupViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
         {
             #region - Settings -
-            Id = 156;
-            Content = "";
-            Category = CategoryEnum.PANEL_SHELL_VM_ITEM;
+            ClassId = 156;
+            ClassContent = "";
+            ClassCategory = CategoryEnum.PANEL_SHELL_VM_ITEM;
             #endregion - Settings -
             
         }

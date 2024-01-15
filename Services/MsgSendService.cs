@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using Ironwall.Framework.Services;
+using Ironwall.Libraries.Base.Services;
 using Ironwall.Thirdparty.SendMessage.Models;
 using System;
 using System.Collections.Generic;
@@ -13,8 +14,7 @@ using System.Threading.Tasks;
 
 namespace Ironwall.Thirdparty.SendMessage.Services
 {
-    public class MsgSendService
-        : IService
+    public class MsgSendService : IService
     {
         
         #region - Ctors -
@@ -29,8 +29,9 @@ namespace Ironwall.Thirdparty.SendMessage.Services
             return Task.CompletedTask;
         }
 
-        public void Stop()
+        public Task StopAsync(CancellationToken token = default)
         {
+            return Task.CompletedTask;
         }
         #endregion
         #region - Overrides -
@@ -38,7 +39,6 @@ namespace Ironwall.Thirdparty.SendMessage.Services
         #region - Binding Methods -
         #endregion
         #region - Processes -
-
         public async Task<bool> SendMessage(IMsgModel msg)
         {
             UdpClient client = new UdpClient();
@@ -70,6 +70,8 @@ namespace Ironwall.Thirdparty.SendMessage.Services
                 return false;
             }
         }
+
+        
         #endregion
         #region - IHanldes -
         #endregion
@@ -78,6 +80,5 @@ namespace Ironwall.Thirdparty.SendMessage.Services
         #region - Attributes -
         private MsgSendSetupModel _setupModel;
         #endregion
-
     }
 }

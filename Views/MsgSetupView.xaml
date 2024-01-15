@@ -48,7 +48,7 @@
         <TextBlock x:Name="TextBlockItem"
                    Grid.Column="2"
                    IsEnabled="{Binding ElementName=ToggleButtonItem, Path=IsChecked}"
-                   Text="SK 자산 DB 전송 설정">
+                   Text="{DynamicResource Thirdpart_SendMessage}">
 
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
