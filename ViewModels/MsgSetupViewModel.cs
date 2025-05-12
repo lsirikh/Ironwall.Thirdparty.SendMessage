@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using Ironwall.Framework.ViewModels.ConductorViewModels;
+using Ironwall.Libraries.Base.Services;
 using Ironwall.Libraries.Enums;
 using Ironwall.Thirdparty.SendMessage.Models;
 using Ironwall.Thirdparty.SendMessage.Views;
@@ -15,7 +16,8 @@ namespace Ironwall.Thirdparty.SendMessage.ViewModels
     public class MsgSetupViewModel : BaseViewModel
     {
         #region - Ctors -
-        public MsgSetupViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
+        public MsgSetupViewModel(IEventAggregator eventAggregator
+                                , ILogService log) : base(eventAggregator, log)
         {
             #region - Settings -
             ClassId = 156;
